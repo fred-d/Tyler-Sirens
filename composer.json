@@ -2,11 +2,14 @@
   "name": "TylerWebDev/TWD-Sirens",
   "description": "A little project used to track live 911 calls in the Greater Tyler Area.",
   "minimum-stability": "stable",
-  "license": "GPLv3",
+  "license": "GNU GPLv3",
   "authors": [
     {
       "name": "John 'looklittlejohn' Martin",
       "email": "john@tylermaker.space"
     }
-  ]
+  ],
+  "require": {
+    "slim/slim": "2.6.2"
+  }
 }
