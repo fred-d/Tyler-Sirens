@@ -5,8 +5,11 @@ require_once 'vendor/autoload.php';
 
 $app = new \Slim\Slim();
 
-$app->get('/', function() {
-    $message = "Hello, World!";
+$app->get('/', function() use ($app) {
+    $app->render("lib/views/home.view.php",
+        array(
+            'message' => 'Hello, World!'
+        ));
 });
 
 $app->run();
