@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "63ca1e8164458d3f9c71f16cb27b7d33",
-    "content-hash": "888e9043aba36f08697d9115a0b95082",
+    "hash": "16ee7d0a77ba112e60078d256eb70673",
+    "content-hash": "9f1ffe56aa34ec127480e3f6a4bd1ee3",
     "packages": [
         {
             "name": "slim/slim",
@@ -52,6 +52,33 @@
                 "router"
             ],
             "time": "2015-03-08 18:41:17"
+        },
+        {
+            "name": "zurb/foundation",
+            "version": "5.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zurb/foundation.git",
+                "reference": "5fa4adcd7ea8ce021bf5ade8189a1d7c5a1d75dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zurb/foundation/zipball/5fa4adcd7ea8ce021bf5ade8189a1d7c5a1d75dd",
+                "reference": "5fa4adcd7ea8ce021bf5ade8189a1d7c5a1d75dd",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The most advanced responsive front-end framework in the world.",
+            "homepage": "http://foundation.zurb.com",
+            "keywords": [
+                "foundation",
+                "scss"
+            ],
+            "time": "2014-01-15 21:58:15"
         }
     ],
     "packages-dev": [],
