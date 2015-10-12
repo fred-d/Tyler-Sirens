@@ -27,7 +27,7 @@
                     "Interop\\Container\\": "src/Interop/Container/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -60,7 +60,7 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -105,7 +105,7 @@
                     "Pimple": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -151,7 +151,7 @@
                     "Psr\\Http\\Message\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -202,7 +202,7 @@
                     "Slim\\": "Slim"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -266,7 +266,7 @@
                     "Slim\\Views\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -294,12 +294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "aa1596785b515a96cd10275849dc0408ffcfef12"
+                "reference": "e624d0849e1aa729ea7af0af9e7eec2dbfdc4133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/aa1596785b515a96cd10275849dc0408ffcfef12",
-                "reference": "aa1596785b515a96cd10275849dc0408ffcfef12",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e624d0849e1aa729ea7af0af9e7eec2dbfdc4133",
+                "reference": "e624d0849e1aa729ea7af0af9e7eec2dbfdc4133",
                 "shasum": ""
             },
             "require": {
@@ -320,7 +320,7 @@
                     "Twig_": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -347,7 +347,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-10-08 15:08:17"
+            "time": "2015-10-12 06:54:22"
         }
     ],
     "packages-dev": [],
