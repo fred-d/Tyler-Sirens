@@ -14,17 +14,17 @@ $twig = new Twig_Environment($loader, array(
 ));
 $twig->addExtension(new Twig_Extension_Debug());
 
-$app->get('/', function () use ($twig) {
-    return $twig->render('home.html', array());
+$app->get('/', function ($request, $response, $args) use ($twig) {
+    return $twig->render('home.html', array('request' => $request, 'page' => 'home'));
 });
-$app->get('/home', function() use ($twig) {
-    return $twig->render('home.html', array());
+$app->get('/home', function($request, $response, $args) use ($twig) {
+    return $twig->render('home.html', array('request' => $request, 'page' => 'home'));
 });
-$app->get('/app', function() use ($twig) {
-    return $twig->render('app.html');
+$app->get('/app', function($request, $response, $args) use ($twig) {
+    return $twig->render('app.html', array('request' => $request, 'page' => 'app'));
 });
-$app->get('/about', function() use ($twig) {
-    return $twig->render('about.html');
+$app->get('/about', function($request, $response, $args) use ($twig) {
+    return $twig->render('about.html', array('request' => $request, 'page' => 'about'));
 });
 
 

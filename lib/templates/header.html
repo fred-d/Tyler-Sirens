@@ -4,7 +4,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/assets/css/octicons/octicons.css">
     <link rel="stylesheet" href="/assets/css/app.css" />
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">-->
+    {% if page == 'app' %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVThsJL0Er4QGiNzCD6OJxHam7L7yDojk&callback=initMap"></script>
+    <script type="text/javascript">
+        var map;
+        function initMap() {
+            window.onload(function() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    center: {lat: 32.350802, lng: -95.300604},
+                    zoom: 13,
+                    zoomControl: true,
+                    streetViewControl: false,
+                    scrollwheel: false,
+                    mapTypeControl: false,
+                    rotateControl: false,
+                    styles: [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}]
+                });
+            })
+        }
+    </script>
+    {% endif %}
 </head>
 <body>
 <a href="https://github.com/TylerWebDev/Tyler-Sirens" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;   z-index: 1001;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
@@ -16,9 +36,9 @@
             </a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/app">Live</a></li>
+            <li {%if page=='home'%}class="active"{%endif%}><a href="/home">Home</a></li>
+            <li {%if page=='about'%}class="active"{%endif%}><a href="/about">About</a></li>
+            <li {%if page=='app'%}class="active"{%endif%}><a href="/app">Live</a></li>
         </ul>
     </div>
 </nav>

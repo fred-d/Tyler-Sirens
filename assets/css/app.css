@@ -53,3 +53,6 @@ div#footer-final a:active {
     color: #AAAAAA;
     text-underline: none;
 }
+
+
+#map { height: 100%; margin-top: -20px;}
