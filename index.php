@@ -12,6 +12,7 @@ $twig = new Twig_Environment($loader, array(
     'cache' => $app_path.'/lib/cache',
     'debug' => true
 ));
+$twig->addExtension(new Twig_Extension_Debug());
 
 $app->get('/', function () use ($twig) {
     return $twig->render('home.html', array());
@@ -19,9 +20,13 @@ $app->get('/', function () use ($twig) {
 $app->get('/home', function() use ($twig) {
     return $twig->render('home.html', array());
 });
-$app->get('/app', function() {
-    return '//TODO';
+$app->get('/app', function() use ($twig) {
+    return $twig->render('app.html');
 });
+$app->get('/about', function() use ($twig) {
+    return $twig->render('about.html');
+});
+
 
 $app->get('/humans.txt', function() {
     echo '<embed width="100%" height="100%" name="plugin" src=/assets/sfw/animatedLogo.sfw" '.
