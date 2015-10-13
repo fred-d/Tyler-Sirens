@@ -3,22 +3,27 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 require_once 'vendor/autoload.php';
-require_once 'lib/RouteHandlers.php';
 
 $app = new \Slim\App();
+$app_path = realpath(__DIR__);
 
-$app->get('/', function () {
-    return RouteHandlers::HomeRoute();
+$loader = new Twig_Loader_Filesystem($app_path.'/lib/templates');
+$twig = new Twig_Environment($loader, array(
+    'cache' => $app_path.'/lib/cache',
+));
+
+$app->get('/', function () use ($twig) {
+    return $twig->render('home.html', array());
 });
-$app->get('/home', function() {
-    return RouteHandlers::HomeRoute();
+$app->get('/home', function() use ($twig) {
+    return $twig->render('home.html', array());
 });
 $app->get('/app', function() {
-    return RouteHandlers::AppRoute();
+    return '//TODO';
 });
 
 $app->get('/humans.txt', function() {
-    echo '<embed width="100%" height="100%" name="plugin" src="/assets/sfw/animatedLogo.sfw" '.
+    echo '<embed width="100%" height="100%" name="plugin" src=/assets/sfw/animatedLogo.sfw" '.
         'type="application/x-shockwave-flash">';
 });
 
