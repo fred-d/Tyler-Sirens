@@ -2,3 +2,44 @@
     width: auto;
     height: 100%;
 }
+
+#footer {
+    margin-top: 30px;
+    border-top: solid #222 2px;
+    position: relative;
+    background-color: #333;
+    width: 100%;
+    min-height: 300px;
+}
+#footer p {
+    color: #001414;
+}
+#footer a:visited {
+    color: #002727;
+    text-underline: single;
+}
+#footer a {
+    color: #002727;
+    text-underline: single;
+}
+#footer a:active {
+    color: #002727;
+    text-underline: none;
+}
+#footer-final {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    background-color: #222;
+    width: 100%;
+}
+
+div#footer-logo img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 40px;
+}

@@ -3,31 +3,23 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 require_once 'vendor/autoload.php';
+require_once 'lib/RouteHandlers.php';
 
-$container = new \Slim\Container;
+$app = new \Slim\App();
 
-// Register component on container
-$container['view'] = function ($c) {
-    $view = new \Slim\Views\Twig('/lib/templates');
-
-    $view->addExtension(new \Slim\Views\TwigExtension(
-        $c['router'],
-        $c['request']->getUri()
-    ));
-
-    return $view;
-};
-
-$app = new \Slim\App($container);
-//$app->config('debug', true);
-
-$app->get('/', function($request, $response, $args){
-    echo 'Hello, World!';
+$app->get('/', function () {
+    return RouteHandlers::HomeRoute();
+});
+$app->get('/home', function() {
+    return RouteHandlers::HomeRoute();
+});
+$app->get('/app', function() {
+    return RouteHandlers::AppRoute();
 });
 
-// Render Twig template in route
-$app->get('/home', function ($request, $response, $args) {
-    return require_once("lib/templates/home.html");
+$app->get('/humans.txt', function() {
+    echo '<embed width="100%" height="100%" name="plugin" src="/assets/sfw/animatedLogo.sfw" '.
+        'type="application/x-shockwave-flash">';
 });
 
 // Run app
