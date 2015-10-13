@@ -11,21 +11,6 @@
     width: 100%;
     min-height: 300px;
 }
-#footer p {
-    color: #001414;
-}
-#footer a:visited {
-    color: #002727;
-    text-underline: single;
-}
-#footer a {
-    color: #002727;
-    text-underline: single;
-}
-#footer a:active {
-    color: #002727;
-    text-underline: none;
-}
 #footer-final {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -36,10 +21,33 @@
     width: 100%;
 }
 
-div#footer-logo img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: auto;
-    height: 40px;
+div#footer-final {
+    background-image: url("/assets/img/Logo-White.png");
+    background-position: center 5px;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    font-size: 12pt;
+    color: #AAAAAA;
+    padding-right: 20px;
+    padding-left: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+}
+div#footer-final div#badges {
+    float: left;
+}
+div#footer-final div#love {
+    float: right;
+}
+div#footer-final a:visited {
+    color: #AAAAAA;
+    text-underline: single;
+}
+div#footer-final a {
+    color: #AAAAAA;
+    text-underline: single;
+}
+div#footer-final a:active {
+    color: #AAAAAA;
+    text-underline: none;
 }
