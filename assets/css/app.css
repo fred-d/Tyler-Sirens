@@ -21,9 +21,7 @@
 }
 
 div#footer-final {
-    background-image: url("/assets/img/Logo-White.png");
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: center center url("/assets/img/Logo-White.png") #222 no-repeat;
     background-size: 25px;
     font-size: 12pt;
     color: #AAAAAA;
@@ -72,23 +70,45 @@ div#map {
 }
 
 div#hud {
-    padding: 10px;
-    border: solid #000 1px;
-    border-radius: 2px;
     z-index: 99;
     position: absolute;
     top: 65px;
     left: 15px;
     background-color: #000;
-    opacity: 0.75;
+    opacity: 0.85;
     min-height: 70%;
     pointer-events: none;
+    border-radius: 2px;
 }
-div#hud h2 {
+div#hud div#wrapper {
+    padding: 10px;
+}
+div#hud div#wrapper h2 {
     color: #FFF;
     opacity: 1.0;
 }
-div#hud p {
+div#hud div#wrapper p {
     color: #FFF;
     opacity: 1.0;
+}
+div#hud div#controls {
+    padding: 1px;
+    opacity: 1.0;
+    border-top: 1px solid #AAAAAA;
+    position: absolute;
+    background-color: #444;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    font-size: 13pt;
+    pointer-events: all;
+}
+div#hud div#controls span {
+    color: #FFFFFF;
+}
+div#hud div#controls span:hover {
+    color: #000000;
+}
+div#hud div#controls span:active {
+    color: #222222;
 }

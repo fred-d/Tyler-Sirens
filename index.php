@@ -12,7 +12,6 @@ $twig = new Twig_Environment($loader, array(
     'cache' => $app_path.'/lib/cache',
     'debug' => true
 ));
-$twig->addExtension(new Twig_Extension_Debug());
 
 $app->get('/', function ($request, $response, $args) use ($twig) {
     return $twig->render('home.html', array('request' => $request, 'page' => 'home'));
@@ -26,8 +25,6 @@ $app->get('/app', function($request, $response, $args) use ($twig) {
 $app->get('/about', function($request, $response, $args) use ($twig) {
     return $twig->render('about.html', array('request' => $request, 'page' => 'about'));
 });
-
-
 $app->get('/humans.txt', function() {
     echo '<embed width="100%" height="100%" name="plugin" src=/assets/sfw/animatedLogo.sfw" '.
         'type="application/x-shockwave-flash">';

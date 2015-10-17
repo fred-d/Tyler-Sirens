@@ -2,4 +2,4 @@
 vendor/
 desktop.ini
 composer.phar
-/lib/cache/*
+/lib/cache/*/*

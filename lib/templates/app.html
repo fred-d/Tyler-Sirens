@@ -2,17 +2,24 @@
 <html>
 {% include 'header.html' %}
 <div id="hud">
-    <h2>//TODO</h2>
-    <p>Sorry, this map isn't functional... yet! :D</p>
+    <div id="wrapper">
+        <h2>//TODO</h2>
+        <p>Sorry, this map isn't functional... yet! :D</p>
+    </div>
+    <div id="controls">
+        <span class="glyphicon glyphicon-refresh" onclick="reset()"></span>
+    </div>
 </div>
 <div id="map"></div>
 <script type="text/javascript">
     var map;
     var marker;
+    var tylerLatLong = {lat: 32.350802, lng: -95.300604};
+
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            center: {lat: 32.350802, lng: -95.300604},
+            center: tylerLatLong,
             zoom: 12,
             zoomControl: true,
             streetViewControl: false,
@@ -22,6 +29,8 @@
             styles: [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}]
         });
     }
+
+    function reset() {map.setCenter(tylerLatLong);}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVThsJL0Er4QGiNzCD6OJxHam7L7yDojk&callback=initMap"></script>
 </body>

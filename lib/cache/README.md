@@ -1,0 +1,1 @@
+Keep this directory open for Twig to send caches to.
