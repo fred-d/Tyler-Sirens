@@ -103,17 +103,19 @@ div#hud div#controls {
     font-size: 13pt;
     pointer-events: all;
 }
-div#hud div#controls span,a,a:visited {
+div#hud div#controls span,
+div#hud div#controls span a,
+div#hud div#controls span a:visited {
     color: #FFFFFF;
     text-decoration: none;
 }
-div#hud div#controls span:hover,a:hover {
+div#hud div#controls span:hover,
+div#hud div#controls span a:hover {
     color: #000000;
     text-decoration: none;
-
 }
-div#hud div#controls span:active,a:active {
+div#hud div#controls span:active,
+div#hud div#controls span a:active {
     color: #222222;
     text-decoration: none;
-
 }

@@ -23,7 +23,7 @@ function reset() {
     map.setCenter(tylerLatLong);
 }
 
-function fullscreen() {
+function toggleFullscreen() {
     if(isFullscreen == false) {
         if(app.requestFullscreen) {
             app.requestFullscreen();
@@ -38,8 +38,8 @@ function fullscreen() {
         }
 
         isFullscreen = true;
-
-    } else if(isFullscreen == true) {
+    }
+    else if(isFullscreen == true) {
         if(document.exitFullscreen) {
             document.exitFullscreen();
         } else if(document.mozCancelFullScreen) {
