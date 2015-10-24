@@ -12,7 +12,6 @@ $twig = new Twig_Environment($loader, array(
     'cache' => $app_path.'/lib/cache',
     'debug' => true
 ));
-$twig->addExtension(new Twig_Extension_Debug());
 
 $makeRender = function($template, $page) use ($twig) {
     return function($request, $response, $args) use ($twig, $template, $page) {

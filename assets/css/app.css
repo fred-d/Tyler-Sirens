@@ -16,22 +16,24 @@
     padding-bottom: 5px;
     position: absolute;
     bottom: 0;
-    height: 50px;
     background-color: #222;
     width: 100%;
 }
 
 div#footer-final {
-    background-image: url("/assets/img/Logo-White.png");
-    background-position: center 5px;
-    background-repeat: no-repeat;
+    background: center center url("/assets/img/Logo-White.png") #222 no-repeat;
     background-size: 25px;
     font-size: 12pt;
     color: #AAAAAA;
     padding-right: 20px;
     padding-left: 20px;
     vertical-align: middle;
-    line-height: 40px;
+}
+/* Clearfix */
+div#footer-final:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 div#footer-final div#badges {
     float: left;
@@ -51,6 +53,12 @@ div#footer-final a:active {
     color: #AAAAAA;
     text-underline: none;
 }
+div#footer-final p {
+    margin: 0;
+}
+div#footer-final p, div#footer-final a {
+    line-height: 50px;
+}
 
 
 div#map {
@@ -62,23 +70,52 @@ div#map {
 }
 
 div#hud {
-    padding: 10px;
-    border: solid #000 1px;
-    border-radius: 2px;
     z-index: 99;
     position: absolute;
     top: 65px;
     left: 15px;
     background-color: #000;
-    opacity: 0.75;
+    opacity: 0.85;
     min-height: 70%;
     pointer-events: none;
+    border-radius: 2px;
 }
-div#hud h2 {
+div#hud div#wrapper {
+    padding: 10px;
+}
+div#hud div#wrapper h2 {
     color: #FFF;
     opacity: 1.0;
 }
-div#hud p {
+div#hud div#wrapper p {
     color: #FFF;
     opacity: 1.0;
+}
+div#hud div#controls {
+    padding: 1px;
+    opacity: 1.0;
+    border-top: 1px solid #AAAAAA;
+    position: absolute;
+    background-color: #444;
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+    font-size: 13pt;
+    pointer-events: all;
+}
+div#hud div#controls span,
+div#hud div#controls span a,
+div#hud div#controls span a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+div#hud div#controls span:hover,
+div#hud div#controls span a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+div#hud div#controls span:active,
+div#hud div#controls span a:active {
+    color: #222222;
+    text-decoration: none;
 }

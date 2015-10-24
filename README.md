@@ -2,9 +2,22 @@ Tyler Sirens
 -------------
 ###### Maintainer: John 'looklittlejohn' Martin
 
-## About
+### Installation
+#### Prerequisite
+ * PHP >= 5.3.*
+ * A working Copy of Composer
+ * A Working Web Server -- I don't care what you use.
 
-### inspiration
+#### Install Commands
+ 1. Download the source code `git pull https://github.com/TylerWebDev/Tyler-Sirens.git`
+ 2. Download the necessary  libraries `composer update`
+ 3. Open your browser and check it out!
+
+##### Bang!
+![image](https://cloud.githubusercontent.com/assets/1130387/10501965/6dacfa6c-72ac-11e5-9852-7fd6046ba075.png)
+
+## About
+### Inspiration
 
 Back before [TWD](https://tylerwebdev.io/) was a thing, there was a small group that went by the name of [Hack Tyler](http://hacktyler.com/). While the history and ethics of the group are somewhat of a gray area, they are still attributed as being one of the first of its kind in the Tyler area. Before their presence was known, there were no clubs or organizations based around hacking/programming that encouraged community in Tyler. For that, Hack Tyler should be remembered as being ahead of its time.
 

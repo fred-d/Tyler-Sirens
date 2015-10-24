@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html>
 {% include 'header.html' %}
-<div id="hud">
-    <h2>//TODO</h2>
-    <p>Sorry, this map isn't functional... yet! :D</p>
+<div id="app">
+    <div id="hud">
+        <div id="wrapper">
+            <h2>//TODO</h2>
+            <p>Sorry, this map isn't functional... yet! :D</p>
+        </div>
+        <div id="controls">
+            <span class="glyphicon glyphicon-refresh" onclick="reset()"></span>
+            &nbsp;
+            <span class="glyphicon glyphicon-fullscreen" onclick="toggleFullscreen()"></span>
+            &nbsp;
+            <a class="glyphicon glyphicon-thumbs-up" href="https://www.facebook.com/Tyler-Web-Dev-416205281908784/" target="_blank"></a>
+        </div>
+    </div>
+    <div id="map"></div>
 </div>
-<div id="map"></div>
-<script type="text/javascript">
-    var map;
-    var marker;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            center: {lat: 32.350802, lng: -95.300604},
-            zoom: 12,
-            zoomControl: true,
-            streetViewControl: false,
-            scrollwheel: true,
-            mapTypeControl: false,
-            rotateControl: false,
-            styles: [{"stylers":[{"hue":"#ff1a00"},{"invert_lightness":true},{"saturation":-100},{"lightness":33},{"gamma":0.5}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2D333C"}]}]
-        });
-    }
-</script>
+<script src="/assets/js/app.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVThsJL0Er4QGiNzCD6OJxHam7L7yDojk&callback=initMap"></script>
 </body>
 </html>
