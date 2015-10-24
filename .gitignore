@@ -3,3 +3,4 @@ vendor/
 desktop.ini
 composer.phar
 /lib/cache/*
+node_modules/
