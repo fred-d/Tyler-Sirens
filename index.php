@@ -14,19 +14,17 @@ $twig = new Twig_Environment($loader, array(
 ));
 $twig->addExtension(new Twig_Extension_Debug());
 
-$app->get('/', function ($request, $response, $args) use ($twig) {
-    return $twig->render('home.html', array('request' => $request, 'page' => 'home'));
-});
-$app->get('/home', function($request, $response, $args) use ($twig) {
-    return $twig->render('home.html', array('request' => $request, 'page' => 'home'));
-});
-$app->get('/app', function($request, $response, $args) use ($twig) {
-    return $twig->render('app.html', array('request' => $request, 'page' => 'app'));
-});
-$app->get('/about', function($request, $response, $args) use ($twig) {
-    return $twig->render('about.html', array('request' => $request, 'page' => 'about'));
-});
+$makeRender = function($template, $page) use ($twig) {
+    return function($request, $response, $args) use ($twig, $template, $page) {
+        return $twig->render($template, ['request' => $request, 'page' => $page]);
+    };
+};
 
+$app->get('/', $makeRender('home.html', 'home'));
+$app->get('/home', $makeRender('home.html', 'home'));
+$app->get('/app', $makeRender('app.html', 'app'));
+$app->get('/dev', $makeRender('dev.html', 'dev'));
+$app->get('/about', $makeRender('about.html', 'about'));
 
 $app->get('/humans.txt', function() {
     echo '<embed width="100%" height="100%" name="plugin" src=/assets/sfw/animatedLogo.sfw" '.
