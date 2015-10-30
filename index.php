@@ -9,7 +9,6 @@ $app_path = realpath(__DIR__);
 
 $loader = new Twig_Loader_Filesystem($app_path.'/lib/templates');
 $twig = new Twig_Environment($loader, array(
-    'cache' => $app_path.'/lib/cache',
     'debug' => true
 ));
 
