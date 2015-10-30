@@ -15,7 +15,8 @@ module.exports = {
         'react': 'React',
         'react-dom': 'ReactDOM',
         'lodash': '_',
-        'maps': 'google.maps'
+        'maps': 'google.maps',
+        'd3': 'd3'
     },
     resolve: {
         root: path.resolve('./js')
