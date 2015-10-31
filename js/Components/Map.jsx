@@ -9,26 +9,19 @@ export default class Map extends React.Component {
                 lat: 32.35,
                 lng: -95.3
             },
-            zoom: 12
+            zoom: 13
         });
         
-        fetch('http://localhost:8000/minMax').then(data => data.json()).then(data => {
-            var getNumCalls = cell => cell.properties.calls.length;
-            var maxCalls    = d3.max(data.features, getNumCalls);
-            var minCalls    = d3.min(data.features, getNumCalls);
+        fetch('https://tyler-sirens-api.tylerwebdev.io/all').then(data => data.json()).then(data => {
+            var points = data.features
+                .map(feature => new Google.LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]));
             
-            var callScale = d3.scale.quantize()
-                .domain([minCalls, maxCalls])
-                .range(['#4444FF', '#7244D0', '#A144A1', '#D04472', '#FF4444']);
-            
-            this.map.data.addGeoJson(data);
-            this.map.data.setStyle(function(feature) {
-                return {
-                    fillColor: callScale(feature.getProperty('calls').length),
-                    strokeWeight: 0.5,
-                    fillOpacity: 1
-                };
-            })
+            this.heatmap = new Google.visualization.HeatmapLayer({
+                data: points,
+                map: this.map,
+                radius: 20,
+                maxIntensity: 10
+            });
         });
     }
     
