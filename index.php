@@ -25,7 +25,7 @@ $app->get('/dev', $makeRender('dev.html', 'dev'));
 $app->get('/about', $makeRender('about.html', 'about'));
 
 $app->get('/humans.txt', function() {
-    echo '<embed width="100%" height="100%" name="plugin" src="https://dagobah.net/flashswf/rickroll.swf" type="application/x-shockwave-flash">';
+    echo '<embed width="100%" height="100%" name="plugin" src="https://tyler-sirens.tylerwebdev.io/assets/sfw/animatedLogo.sfw" type="application/x-shockwave-flash">';
 });
 
 // Run app
