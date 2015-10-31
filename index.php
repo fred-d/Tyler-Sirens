@@ -25,8 +25,7 @@ $app->get('/dev', $makeRender('dev.html', 'dev'));
 $app->get('/about', $makeRender('about.html', 'about'));
 
 $app->get('/humans.txt', function() {
-    echo '<embed width="100%" height="100%" name="plugin" src="/assets/sfw/animatedLogo.sfw" '.
-        'type="application/x-shockwave-flash">';
+    echo '<embed width="100%" height="100%" name="plugin" src="/assets/sfw/animatedLogo.sfw" type="application/x-shockwave-flash">';
 });
 
 // Run app
