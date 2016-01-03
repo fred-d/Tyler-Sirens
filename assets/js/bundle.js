@@ -60,13 +60,13 @@
 
 	var _ComponentsMapJsx2 = _interopRequireDefault(_ComponentsMapJsx);
 
-	var _AppAppJs = __webpack_require__(5);
+	var _AppAppJs = __webpack_require__(6);
 
-	var _AppAppJs2 = _interopRequireDefault(_AppAppJs);
+	var appContainer = document.getElementById('app');
 
-	console.log(_AppAppJs2['default']);
-
-	_reactDom2['default'].render(React.createElement(_ComponentsMapJsx2['default'], null), document.getElementById('app'));
+	_AppAppJs.app.start(_AppAppJs.initialState, function (state) {
+	    _reactDom2['default'].render(React.createElement(_ComponentsMapJsx2['default'], null), appContainer);
+	});
 
 /***/ },
 /* 1 */
@@ -108,6 +108,10 @@
 
 	var _maps2 = _interopRequireDefault(_maps);
 
+	var _d3 = __webpack_require__(5);
+
+	var _d32 = _interopRequireDefault(_d3);
+
 	var Map = (function (_React$Component) {
 	    _inherits(Map, _React$Component);
 
@@ -120,6 +124,8 @@
 	    _createClass(Map, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
+	            var _this = this;
+
 	            this.map = new _maps2['default'].Map(this.refs.map, {
 	                center: {
 	                    lat: 32.35,
@@ -128,7 +134,20 @@
 	                zoom: 13
 	            });
 
-	            this.map.data.loadGeoJson('http://localhost:8000/all');
+	            fetch('https://tyler-sirens-api.tylerwebdev.io/all').then(function (data) {
+	                return data.json();
+	            }).then(function (data) {
+	                var points = data.features.map(function (feature) {
+	                    return new _maps2['default'].LatLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
+	                });
+
+	                _this.heatmap = new _maps2['default'].visualization.HeatmapLayer({
+	                    data: points,
+	                    map: _this.map,
+	                    radius: 20,
+	                    maxIntensity: 10
+	                });
+	            });
 	        }
 	    }, {
 	        key: 'render',
@@ -151,43 +170,53 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-	var _friar = __webpack_require__(6);
-
-	var framework = _interopRequireWildcard(_friar);
-
-	exports['default'] = app = makeApp();
-	module.exports = exports['default'];
+	module.exports = d3;
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj["default"] = obj; return newObj; } }
+
+	var _friar = __webpack_require__(7);
+
+	var framework = _interopRequireWildcard(_friar);
+
+	var initialState = {
+	    hello: "world"
+	};
+
+	exports.initialState = initialState;
+	var app = framework.makeApp();
+	exports.app = app;
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 
-	var Rx = __webpack_require__(7);
-	var _ = __webpack_require__(8);
+	var Rx = __webpack_require__(8);
 
-	module.exports.dispatch = function dispatch(source) {
+	function dispatch(source) {
 	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
 	        args[_key - 1] = arguments[_key];
 	    }
 
 	    source.onNext(args);
-	};
+	}
 
-	module.exports.makeDispatcher = function makeDispatcher(source) {
+	function makeDispatcher(source) {
 	    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
 	        args[_key2 - 1] = arguments[_key2];
 	    }
@@ -195,19 +224,33 @@
 	    return function () {
 	        dispatch.apply(undefined, [source].concat(args));
 	    };
-	};
+	}
 
-	module.exports.makeSink = function makeSink(fn) {
-	    var partialFn = _.curryRight(fn);
+	/**
+	 * Provides a function that partially applies the given function
+	 * that accepts n arguments, by calling it with an array of arguments [2, 3, ... n] arguments, 
+	 * and then returning a function closed over that accepts the 1st argument and evaluates.
+	 * Since the source has to dispatch its arguments via an array, the simplest way to accept
+	 * the arguments to curry is an array.
+	 *
+	 * The function called from `makeSink` is called internally, so this less-than-pretty API
+	 * of passing arguments via array is never truly exposed to the end user.
+	 * 
+	 * @param  {Function} fn Function to 'curry'
+	 * @return {Function}    Function that will be dispatched
+	 */
+	function makeSink(fn) {
 	    return function (args) {
-	        // If we're given a single argument not in an list, make it into a singleton
-	        if (args !== undefined && !Array.isArray(args)) args = [args];
+	        if (args.length !== fn.length - 1) // Because we expect 1 argument - state
+	            throw 'Given function expected ' + (fn.length - 1) + ' arguments, but you provided ' + args.length;
 
-	        return args === undefined ? fn : partialFn.apply(undefined, _toConsumableArray(args));
+	        return function (state) {
+	            return fn.apply(undefined, [state].concat(_toConsumableArray(args)));
+	        };
 	    };
-	};
+	}
 
-	module.exports.makeApp = function makeApp() {
+	function makeApp() {
 	    var sinks = [];
 	    var updateState = function updateState(state, fn) {
 	        return fn(state);
@@ -234,21 +277,22 @@
 	            return state.subscribe(fn);
 	        }
 	    };
+	}
+
+	module.exports = {
+	    dispatch: dispatch,
+	    makeDispatcher: makeDispatcher,
+	    makeSink: makeSink,
+	    makeApp: makeApp
 	};
 
 
 
 /***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	module.exports = Rx;
-
-/***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = _;
+	module.exports = Rx;
 
 /***/ }
 /******/ ]);
